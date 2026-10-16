@@ -75,6 +75,22 @@ jobs:
           rm -rf ./additional/README.md
           mv ./additional/* ./community/data/
 
+      - name: Drop malformed lines
+        run: |
+          # В antifilter.download встречаются разорванные табуляцией punycode-домены,
+          # например "...xn--live	-66gc5anake3b2ekjobct6m". Сборщик делит строку по
+          # пробелу и второй кусок принимает за атрибут, а атрибут обязан начинаться
+          # с '@' — отсюда "Failed: invalid attribute" и падение всей сборки.
+          # Выкидываем только такие строки, записи с настоящими атрибутами сохраняем.
+          before=$(cat ./community/data/* 2>/dev/null | wc -l)
+          for f in ./community/data/*; do
+            [ -f "$f" ] || continue
+            awk '{ok=1; for (i=2; i<=NF; i++) if (substr($i,1,1) != "@") ok=0; if (ok) print}' "$f" > "$f.ok"
+            mv "$f.ok" "$f"
+          done
+          after=$(cat ./community/data/* 2>/dev/null | wc -l)
+          echo "строк было $before, стало $after, выброшено $((before-after))"
+
       - name: Build ad block
         run: |
           curl -sSL $ADGUARD_DNS_REJECT_URL | perl -ne '/^\|\|([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})\^$/ && print "$1\n"' | perl -ne 'print if not /^[0-9]{1,3}(\.[0-9]{1,3}){3}$/' > temp-reject.txt
