@@ -34,17 +34,31 @@
 
 # Cкачать
 
-По ссылкам ниже всегда доступна последняя версия файлов.
+Это форк [@runetfreedom/russia-blocked-geosite](https://github.com/runetfreedom/russia-blocked-geosite) с исправленной сборкой
+(апстрим падал с 10.08.2026 на строках с разорванным punycode). Сборка 4 раза в сутки. По ссылкам ниже всегда доступна последняя версия файлов.
 
-- **github**
-    - [https://raw.githubusercontent.com/runetfreedom/russia-blocked-geosite/release/geosite.dat](https://raw.githubusercontent.com/runetfreedom/russia-blocked-geosite/release/geosite.dat)
-    - Hashsum: [https://raw.githubusercontent.com/runetfreedom/russia-blocked-geosite/release/geosite.dat.sha256sum](https://raw.githubusercontent.com/runetfreedom/russia-blocked-geosite/release/geosite.dat.sha256sum)
+**`geosite.dat`** — все категории (~80 МБ):
+
+- **github (raw)**
+    - [https://raw.githubusercontent.com/bropines/russia-blocked-geosite/release/geosite.dat](https://raw.githubusercontent.com/bropines/russia-blocked-geosite/release/geosite.dat)
+    - Hashsum: [https://raw.githubusercontent.com/bropines/russia-blocked-geosite/release/geosite.dat.sha256sum](https://raw.githubusercontent.com/bropines/russia-blocked-geosite/release/geosite.dat.sha256sum)
+- **github (последний релиз)**
+    - [https://github.com/bropines/russia-blocked-geosite/releases/latest/download/geosite.dat](https://github.com/bropines/russia-blocked-geosite/releases/latest/download/geosite.dat)
+    - Hashsum: [https://github.com/bropines/russia-blocked-geosite/releases/latest/download/geosite.dat.sha256sum](https://github.com/bropines/russia-blocked-geosite/releases/latest/download/geosite.dat.sha256sum)
+
+JSDelivr и Fastly полный `geosite.dat` не отдают: файл больше их лимита в 50 МБ (ответ 403).
+
+**`geosite-ru-only.dat`** — компактный (~6 МБ): только `ru-blocked`, `ru-available-only-inside`, `category-gov-ru`,
+`category-ads-all`, `private`. Влезает в лимит памяти сетевого расширения iOS.
+
+- **github (raw)**
+    - [https://raw.githubusercontent.com/bropines/russia-blocked-geosite/release/geosite-ru-only.dat](https://raw.githubusercontent.com/bropines/russia-blocked-geosite/release/geosite-ru-only.dat)
+- **github (последний релиз)**
+    - [https://github.com/bropines/russia-blocked-geosite/releases/latest/download/geosite-ru-only.dat](https://github.com/bropines/russia-blocked-geosite/releases/latest/download/geosite-ru-only.dat)
 - **JSDelivr**
-    - [https://cdn.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat](https://cdn.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat)
-    - Hashsum: [https://cdn.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat.sha256sum](https://cdn.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat.sha256sum)
+    - [https://cdn.jsdelivr.net/gh/bropines/russia-blocked-geosite@release/geosite-ru-only.dat](https://cdn.jsdelivr.net/gh/bropines/russia-blocked-geosite@release/geosite-ru-only.dat)
 - **Fastly + JSDelivr**
-    - [https://fastly.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat](https://fastly.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat)
-    - Hashsum: [https://fastly.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat.sha256sum](https://fastly.jsdelivr.net/gh/runetfreedom/russia-blocked-geosite@release/geosite.dat.sha256sum)
+    - [https://fastly.jsdelivr.net/gh/bropines/russia-blocked-geosite@release/geosite-ru-only.dat](https://fastly.jsdelivr.net/gh/bropines/russia-blocked-geosite@release/geosite-ru-only.dat)
 
 
 ## Cмежные проекты
